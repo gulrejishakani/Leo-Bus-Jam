@@ -2501,7 +2501,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2233750942823250908}
   - component: {fileID: 2076082809373164236}
-  - component: {fileID: 3017598386216256965}
   - component: {fileID: 7803175791037211054}
   m_Layer: 0
   m_Name: Pink Character1
@@ -2549,29 +2548,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &3017598386216256965
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6823130560550808542}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.39858052
-  m_Height: 2.108394
-  m_Direction: 1
-  m_Center: {x: 0.0034919807, y: 1.011777, z: 0}
 --- !u!114 &7803175791037211054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2586,6 +2562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Passenger
   typeIndex: 2
   moveSpeed: 0.25
+  hasReachedBoardingPoint: 0
 --- !u!1 &6868807191016840043
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,12 +18,16 @@ public class Car : MonoBehaviour
         Passenger frontPassenger = queueManager.GetFrontPassenger();
         if (frontPassenger == null) return;
 
-        if (frontPassenger.typeIndex == acceptedTypeIndex)
+       if (frontPassenger.typeIndex == acceptedTypeIndex 
+    && frontPassenger.hasReachedBoardingPoint)
+        
         {
             // Seat target assign karo
             Transform seatTarget = seatPoints[filledSeats];
 
-            frontPassenger.SetFinalPoint(seatTarget);
+           // frontPassenger.SetFinalPoint(seatTarget);
+           // frontPassenger.SitOnSeat(seatTarget,capacity);
+            frontPassenger.SitOnSeat(seatTarget, capacity);
 
             queueManager.RemoveFrontPassenger();
             spawner.OnPassengerBoarded();
@@ -47,11 +51,11 @@ public class Car : MonoBehaviour
 
     System.Collections.IEnumerator DriveAway()
     {
-        float moveTime = 2f;
-        float timer = 0f;
+        float moveTime = 20f;
+        float timer = 05f;
 
         Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + Vector3.forward * 5f;
+        Vector3 endPos = startPos + Vector3.forward * 1f;
 
         while (timer < moveTime)
         {

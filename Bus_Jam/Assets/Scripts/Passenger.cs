@@ -1,113 +1,3 @@
-/*using UnityEngine;
-
-public class Passenger : MonoBehaviour
-{
-    public int typeIndex;          // kaunsa type / human
-    public float moveSpeed = 2f;   // chalne ki speed
-
-    private Transform turnPoint;       // pehla point (aage)
-    private Transform boardingPoint;   // final point (left turn ke baad)
-    private bool reachedTurn = false;
-    private bool reachedFinal = false; // 🔥 new flag (name change nahi, sirf add)
-
-    // Spawner se path set hoga
-    public void SetPath(Transform turn, Transform boarding)
-    {
-        turnPoint = turn;
-        boardingPoint = boarding;
-        reachedTurn = false;
-        reachedFinal = false;
-    }
-
-    public void SetFinalPoint(Transform finalPoint)
-    {
-        boardingPoint = finalPoint;
-    }
-
-    void Update()
-    {
-        if (turnPoint == null || boardingPoint == null) return;
-        if (reachedFinal) return; // 🔥 final pe pahunch gaya to ruk jao
-
-        // Pehle turnPoint, phir boardingPoint
-        Transform target = reachedTurn ? boardingPoint : turnPoint;
-
-        Vector3 toTarget = target.position - transform.position;
-        toTarget.y = 0f;
-
-        float dist = toTarget.magnitude;
-
-        if (dist > 0.05f)
-        {
-            Vector3 dir = toTarget.normalized;
-            transform.position += dir * moveSpeed * Time.deltaTime;
-
-            // Face towards movement direction
-            if (dir != Vector3.zero)
-                transform.forward = dir;
-        }
-        else
-        {
-            // Target reached
-            if (!reachedTurn)
-            {
-                reachedTurn = true; // ab sirf final point ki taraf jayega
-            }
-            else
-            {
-                reachedFinal = true; // 🔥 final point pe aa kar ruk jao
-            }
-        }
-    }
-}
-*/
-
-
-/*
-using UnityEngine;
-
-public class Passenger : MonoBehaviour
-{
-    public int typeIndex;
-    public float moveSpeed = 2f;
-
-    private Transform boardingPoint;   
-    private bool reachedFinal = false;
-
-    public void SetFinalPoint(Transform finalPoint)
-    {
-        boardingPoint = finalPoint;
-        reachedFinal = false;
-    }
-
-    void Update()
-    {
-        if (boardingPoint == null) return;
-        if (reachedFinal) return;
-
-        Vector3 toTarget = boardingPoint.position - transform.position;
-        toTarget.y = 0f;
-
-        float dist = toTarget.magnitude;
-
-        if (dist > 0.05f)
-        {
-            Vector3 dir = toTarget.normalized;
-            transform.position += dir * moveSpeed * Time.deltaTime;
-
-            if (dir != Vector3.zero)
-                transform.forward = dir;
-        }
-        else
-        {
-            reachedFinal = true;
-        }
-    }
-}*/
-
-
-
-
 
 using UnityEngine;
 
@@ -120,6 +10,10 @@ public class Passenger : MonoBehaviour
     private bool reachedZ = false;
     private bool reachedFinal = false;
 
+    [Header("Car Seats")]
+    public bool hasReachedBoardingPoint = false;
+private bool isSeated = false;
+
     public void SetFinalPoint(Transform finalPoint)
     {
         boardingPoint = finalPoint;
@@ -129,7 +23,10 @@ public class Passenger : MonoBehaviour
 
     void Update()
     {
-        if (boardingPoint == null || reachedFinal) return;
+       if (isSeated) return;
+       
+        //if (boardingPoint == null || reachedFinal) return;
+        if (boardingPoint == null || reachedFinal && isSeated) return;
 
         Vector3 current = transform.position;
         Vector3 target = boardingPoint.position;
@@ -165,6 +62,79 @@ public class Passenger : MonoBehaviour
         else
         {
             reachedFinal = true;
+
+              if (!isSeated)
+    {
+        hasReachedBoardingPoint = true;
+    }
         }
+
+
+       
+    }
+
+
+// Car Working Code 4 Seater
+
+/*public void SitOnSeat(Transform seatTarget)
+{
+    isSeated = true;
+
+    transform.SetParent(seatTarget);
+
+    transform.localPosition = Vector3.zero;
+    transform.localRotation = Quaternion.identity;
+
+    Vector3 desiredScale = new Vector3(0.819999993f,0.745456696f,1.11818504f);
+   // transform.localScale = new Vector3(0.580501616f,0.527728736f,0.791593134f);
+
+   Vector3(1.67999995,1.52727246,2.29090905)
+   
+}*/
+
+
+
+
+//7-3-2026
+
+public void SitOnSeat(Transform seatTarget, int seatCapacity)
+{
+    isSeated = true;
+
+    transform.SetParent(seatTarget);
+    transform.localPosition = Vector3.zero;
+    transform.localRotation = Quaternion.identity;
+
+    if (seatCapacity == 4)
+    {
+       // transform.localScale = new Vector3(0.819999993f,0.745456696f,1.11818504f);
+        transform.localScale = new Vector3(0.959999979f,0.87272948f,1.30909443f);
+        
+    }
+    else if (seatCapacity == 6)
+    {
+        //transform.localScale = new Vector3(0.580501616f,0.527728736f,0.791593134f);
+       //transform.localScale = new  Vector3(2.28999996f,2.0818162f,3.12272501f);
+       transform.localScale = new   Vector3(2.08999991f,1.89999819f,2.849998f);
+    }
+    else if (seatCapacity == 10)
+    {
+       // transform.localScale = new Vector3(1.67999995f,1.52727246f,2.29090905f);
+        
+        transform.localScale = new Vector3(95.9000015f,87.1818085f,130.772736f);
     }
 }
+
+
+
+
+
+
+// cube 3 Vector3(1.77999997,0.430000007,-0.800000012)
+//cube 4  Vector3(2.43000007,0.430000007,-0.800000012)
+
+// Seat Vector3(2.49000001,0.180000007,-0.379999995)
+//seat 4 Vector3(1.76999998,0.180000007,-0.379999995)
+}
+
+//Vector3(1.76999998,0.180000007,0.698000014)

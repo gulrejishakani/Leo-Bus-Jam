@@ -1805,7 +1805,6 @@ GameObject:
   m_Component:
   - component: {fileID: 608294217179914442}
   - component: {fileID: 1252342115612547892}
-  - component: {fileID: 6551501373490977006}
   - component: {fileID: 2928480439703822890}
   m_Layer: 0
   m_Name: Red Character1
@@ -1853,29 +1852,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &6551501373490977006
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4572981719772042625}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.39858052
-  m_Height: 2.108394
-  m_Direction: 1
-  m_Center: {x: 0.0034919807, y: 1.011777, z: 0}
 --- !u!114 &2928480439703822890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Passenger
   typeIndex: 3
   moveSpeed: 0.25
+  hasReachedBoardingPoint: 0
 --- !u!1 &4664589341646744857
 GameObject:
   m_ObjectHideFlags: 0
