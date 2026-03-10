@@ -2540,6 +2540,9 @@ MonoBehaviour:
   spawnInterval: 1
   passengerTypePrefabs:
   - {fileID: 6850919749528742569, guid: cd7237d327d515642a814278d389642c, type: 3}
+  - {fileID: 3324596146240802364, guid: add4fe0f77e1e3c4d964700f41bff2dc, type: 3}
+  - {fileID: 6823130560550808542, guid: b0e43292c29e1db459f9077b9c5b8128, type: 3}
+  - {fileID: 4572981719772042625, guid: 479286642dbb506419144c8d6b84ebfc, type: 3}
   maxVisible: 19
 --- !u!4 &1617974769
 Transform:
